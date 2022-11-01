@@ -78,5 +78,4 @@ public class DropboxQuestions {
         String answerElement = browserRule.getDriver().findElement(nubmaImportantAnwser).getText();
         assertEquals(importantAnwserTxt, answerElement );
     }
-
 }

@@ -13,7 +13,6 @@ public class MainPage {
     private final By firstOrderButton = By.xpath(".//button[@class='Button_Button__ra12g']");
     private final By secondOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
-
     private final WebDriver driver;
 
     public MainPage(WebDriver driver) {
@@ -29,8 +28,8 @@ public class MainPage {
         if (numberOfButton) {
             driver.findElement(firstOrderButton).click();
         } else {
-            WebElement element = driver.findElement(By.className("accordion"));
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+            WebElement element = driver.findElement(secondOrderButton);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
             driver.findElement(secondOrderButton).click();
         }
     }
