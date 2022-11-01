@@ -18,10 +18,6 @@ public class BrowserRule extends ExternalResource {
 
     @Override
     protected void before() throws Throwable {
-        /*
-        System.setProperty("webdriver.chrome.driver", "/Users/slava/IdeaProjects/local-browser-drivers/chromedriver");
-        System.setProperty("webdriver.gecko.driver", "/Users/slava/IdeaProjects/local-browser-drivers/geckodriver");
-         */
 
         String browser = System.getenv("browser");
 
