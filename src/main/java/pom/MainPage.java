@@ -1,7 +1,5 @@
 package pom;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -18,10 +16,6 @@ public class MainPage {
 
     private final WebDriver driver;
 
-    public String getUrl() {
-        return url;
-    }
-
     public MainPage(WebDriver driver) {
         this.driver = driver;
     }
@@ -29,10 +23,6 @@ public class MainPage {
     public MainPage open() {
         driver.get(url);
         return this;
-    }
-
-    public OrderPage orderPage() {
-        return new OrderPage(driver);
     }
 
     public MainPage clickFirstOrderButton(){
