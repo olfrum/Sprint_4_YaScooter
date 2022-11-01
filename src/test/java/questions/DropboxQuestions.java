@@ -77,6 +77,7 @@ public class DropboxQuestions {
                 .open()
                 .scrollToImportantQuestionHeader();
 
+
         browserRule.getDriver().findElement(nubmaImportantQuestion).click();
         String answerElement = browserRule.getDriver().findElement(nubmaImportantAnwser).getText();
         assertEquals(importantAnwserTxt, answerElement );
