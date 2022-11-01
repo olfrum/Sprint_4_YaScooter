@@ -1,17 +1,11 @@
 package pom;
 
-<<<<<<< Updated upstream
-public class OrderPage {
-=======
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
-
-import static org.hamcrest.core.StringStartsWith.startsWith;
+import static org.hamcrest.CoreMatchers.startsWith;
 
 public class OrderPage {
 
@@ -34,73 +28,73 @@ public class OrderPage {
         this.driver = driver;
     }
 
-    public OrderPage inputName (String name){
+    public OrderPage inputName(String name) {
         driver.findElement(holderName).sendKeys(name);
         return this;
     }
 
-    public OrderPage inputSurename (String surename){
+    public OrderPage inputSurename(String surename) {
         driver.findElement(holderSurename).sendKeys();
         return this;
     }
 
-    public OrderPage inputAddress (String address){
+    public OrderPage inputAddress(String address) {
         driver.findElement(holderAddress).sendKeys();
         return this;
     }
 
-    public OrderPage inputMetro (String metro){
+    public OrderPage inputMetro(String metro) {
         driver.findElement(holderMetro).click();
         driver.findElement(holderMetro).sendKeys(metro);
         driver.findElement(holderMetro).sendKeys(Keys.ARROW_DOWN, Keys.ENTER);
         return this;
     }
 
-    public OrderPage inputPhoneNumber(String phone){
+    public OrderPage inputPhoneNumber(String phone) {
         driver.findElement(holderPhone).sendKeys(phone);
         return this;
     }
 
-    public OrderPage clickNext(){
+    public OrderPage clickNext() {
         driver.findElement(holderNextPage).click();
         return this;
     }
 
-    public OrderPage inputWhereDate(String date){
+    public OrderPage inputWhereDate(String date) {
         driver.findElement(holderWhere).click();
         driver.findElement(holderWhere).sendKeys(date, Keys.ENTER);
         return this;
     }
-    public OrderPage inputTimeToHold(String period){
+
+    public OrderPage inputTimeToHold(String period) {
         driver.findElement(holderTimeToHold).click();
-        driver.findElement(By.xpath(".//div[@class='Dropdown-menu']/div[text()='" +period+"']")).click();
+        driver.findElement(By.xpath(".//div[@class='Dropdown-menu']/div[text()='" + period + "']")).click();
         return this;
     }
 
-    public OrderPage inputScootaColor(String color){
+    public OrderPage inputScootaColor(String color) {
         driver.findElement(By.id(color)).click();
         return this;
     }
 
-    public OrderPage inputComment(String comment){
+    public OrderPage inputComment(String comment) {
         driver.findElement(holderCommentForCourier).sendKeys(comment);
         return this;
     }
 
-    public OrderPage clickFinalOrderHeaderButton(){
+    public OrderPage clickFinalOrderHeaderButton() {
         driver.findElement(holderOrder).click();
         return this;
     }
 
-    public OrderPage clickOrderHeaderYesButton(){
+    public OrderPage clickOrderHeaderYesButton() {
         driver.findElement(orderModalHeaderFinishYes).click();
         return this;
     }
 
-    public OrderPage checkOrderIsAccepted(){
+    public OrderPage checkOrderIsAccepted() {
         String textOfAccepted = driver.findElement(orderIsAccepted).getText();
         Assert.assertThat("Ошибка в оформлении заказа", textOfAccepted, startsWith("Заказ оформлен"));
         return this;
     }
->>>>>>> Stashed changes
 }
