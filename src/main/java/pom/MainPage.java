@@ -25,14 +25,14 @@ public class MainPage {
         return this;
     }
 
-    public MainPage clickFirstOrderButton(){
-        driver.findElement(firstOrderButton).click();
-        return this;
-    }
-
-    public MainPage clickSecondOrderButton(){
-        driver.findElement(secondOrderButton).click();
-        return this;
+    public void clickOrderButton (boolean numberOfButton) {
+        if (numberOfButton) {
+            driver.findElement(firstOrderButton).click();
+        } else {
+            WebElement element = driver.findElement(By.className("accordion"));
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", element);
+            driver.findElement(secondOrderButton).click();
+        }
     }
 
     public void scrollToImportantQuestionHeader(){
