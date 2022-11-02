@@ -34,12 +34,12 @@ public class OrderPage {
     }
 
     public OrderPage inputSurename(String surename) {
-        driver.findElement(holderSurename).sendKeys();
+        driver.findElement(holderSurename).sendKeys(surename);
         return this;
     }
 
     public OrderPage inputAddress(String address) {
-        driver.findElement(holderAddress).sendKeys();
+        driver.findElement(holderAddress).sendKeys(address);
         return this;
     }
 

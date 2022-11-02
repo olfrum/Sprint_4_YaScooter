@@ -38,8 +38,8 @@ public class OrderScooter {
     @Parameterized.Parameters
     public static Object[][] getOrderData(){
         return new Object[][]{
-                {true, "Бубба", "Грязнопилов", "Спартак", "Москва", "89135325396", "07.11.2022", "сутки", "grey", "Доставка до офиса"},
-                {false, "Вячеслав", "Ячсмит", "Орехово", "Красноярск", "89962285944", "12.12.2023", "пятеро суток", "black", "Я передумал"},
+                {true, "Бубба", "Грязнопилов", "Спартак", "Москва", "89135325396", "07.11.2022", "сутки", "black", "Доставка до офиса"},
+                {false, "Вячеслав", "Ячсмит", "Орехово", "Красноярск", "89962285944", "12.12.2023", "пятеро суток", "grey", "Я передумал"},
         };
     }
 
@@ -47,25 +47,26 @@ public class OrderScooter {
     public BrowserRule browserRule = new BrowserRule();
 
     @Test
-    public void tryToOrderFirstButton(){
+    public void orderScooter(){
         OrderPage orderPage = new OrderPage(browserRule.getDriver());
         MainPage mainPage = new MainPage(browserRule.getDriver());
 
         mainPage
-            .open()
-            .clickOrderButton(orderButton);
+                .open()
+                .clickOrderButton(orderButton);
         orderPage
-            .inputSurename(surname)
-            .inputAddress(address)
-            .inputMetro(metro)
-            .inputPhoneNumber(phone)
-            .clickNext()
-            .inputWhereDate(date)
-            .inputTimeToHold(period)
-            .inputScootaColor(colour)
-            .inputComment(text)
-            .clickFinalOrderHeaderButton()
-            .clickOrderHeaderYesButton()
-            .checkOrderIsAccepted();
+                .inputName(name)
+                .inputSurename(surname)
+                .inputAddress(address)
+                .inputMetro(metro)
+                .inputPhoneNumber(phone)
+                .clickNext()
+                .inputWhereDate(date)
+                .inputTimeToHold(period)
+                .inputScootaColor(colour)
+                .inputComment(text)
+                .clickFinalOrderHeaderButton()
+                .clickOrderHeaderYesButton()
+                .checkOrderIsAccepted();
     }
 }
