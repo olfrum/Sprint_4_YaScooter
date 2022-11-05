@@ -34,8 +34,20 @@ public class MainPage {
         }
     }
 
-    public void scrollToImportantQuestionHeader(){
+    public String getAnswerNum(int pathNum){
+        By setAnswer = By.xpath(".//div[@id='accordion__panel-" + pathNum + "']/p");
+        return driver.findElement(setAnswer).getText();
+    }
+
+    public  MainPage clickQuestion(int questionNum){
+        By questionNumba = By.xpath(".//div[@id='accordion__heading-" + questionNum + "']");
+        driver.findElement(questionNumba).click();
+        return this;
+    }
+
+    public MainPage scrollToImportantQuestionHeader(){
         WebElement element = driver.findElement(importantQuestion);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        return this;
     }
 }
