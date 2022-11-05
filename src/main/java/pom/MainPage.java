@@ -1,7 +1,5 @@
 package pom;
 
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -15,12 +13,7 @@ public class MainPage {
     private final By firstOrderButton = By.xpath(".//button[@class='Button_Button__ra12g']");
     private final By secondOrderButton = By.xpath(".//button[@class='Button_Button__ra12g Button_Middle__1CSJM']");
 
-
     private final WebDriver driver;
-
-    public String getUrl() {
-        return url;
-    }
 
     public MainPage(WebDriver driver) {
         this.driver = driver;
@@ -31,22 +24,30 @@ public class MainPage {
         return this;
     }
 
-    public OrderPage orderPage() {
-        return new OrderPage(driver);
+    public void clickOrderButton (boolean numberOfButton) {
+        if (numberOfButton) {
+            driver.findElement(firstOrderButton).click();
+        } else {
+            WebElement element = driver.findElement(secondOrderButton);
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+            driver.findElement(secondOrderButton).click();
+        }
     }
 
-    public MainPage clickFirstOrderButton(){
-        driver.findElement(firstOrderButton).click();
+    public String getAnswerNum(int pathNum){
+        By setAnswer = By.xpath(".//div[@id='accordion__panel-" + pathNum + "']/p");
+        return driver.findElement(setAnswer).getText();
+    }
+
+    public  MainPage clickQuestion(int questionNum){
+        By questionNumba = By.xpath(".//div[@id='accordion__heading-" + questionNum + "']");
+        driver.findElement(questionNumba).click();
         return this;
     }
 
-    public MainPage clickSecondOrderButton(){
-        driver.findElement(secondOrderButton).click();
-        return this;
-    }
-
-    public void scrollToImportantQuestionHeader(){
+    public MainPage scrollToImportantQuestionHeader(){
         WebElement element = driver.findElement(importantQuestion);
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+        return this;
     }
 }

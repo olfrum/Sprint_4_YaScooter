@@ -1,2 +1,0 @@
-# YaScooter
- yandex samokat
